@@ -1,175 +1,294 @@
 @charset "utf-8";
 
-
-
 .row {
-    max-width: 1140px;
-    margin: 0 auto;
-    padding: 0 10px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 10px;
 }
+/* header, footer 공통 */
 
+/* 헤더 */
 #header {
-	background: #f0f0f1;
-}
-#header > .row {
-    position: relative;
-}
-#header h1 {
-    padding: 35px 0;
-	font-size: 36px;
-	cursor: pointer;
-}
-#header #nav {
-    float: right;
-    font-size: 13px;
-    color: #000000;
+    width: 100%;
+    display: block;
+    height: 100px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    transition: all 0.2s;
+    z-index: 55555;
+  }
+  
+  
+  #header:hover + .hamburger-button span {
+    background: #3d4146;
+  }
+  
+  #header.on {
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0px 8px 10px 2px rgb(0 0 0 / 10%);
+  }
+  #header.on + .hamburger-button span {
+    background: #3d4146;
+  }
+  
+  /* 헤더 로고 */
+  #header .logobox {
+    width: 180px;
+    height: 43px;
     position: absolute;
     top: 50%;
+    left: 15px;
     transform: translateY(-50%);
-    right: 30%;
-    z-index: 9;
-}
-#header #nav .depth1 > li {
-    float: right;
-    position: relative;
-}
-#header #nav .depth1 > li > a {
+  }
+  
+  #header .logobox .logo {
+    background: url(../img/LECAMP_logo1.png);
     display: block;
-    padding: 8px 16px;
-}
-#header .row {
-    display: block;
-}
-#header .depth2 {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    z-index: 9;
-    color: #000;
-    background: #fff;
-    text-align: center;
-    font-size: 14px;
+    width: 110px;
+    height: 35px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-left: 30px;
+    margin-top: 10px;
+  }
+  
+  #header .logobox img {
     display: none;
-	width: 180px;
-	box-shadow: 1px 1px 8px 1px rgba(206,231,183,0.6);
-}
-#header .depth2 a {
+  }
+  
+  #header:hover .logobox .logo {
+    background: url(../img/LECAMP_logo2.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  
+  #header.on .logobox .logo {
+    background: url(../img/LECAMP_logo2.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  
+  /* 헤더 탑메뉴 */
+  #header .top_menu {
+    text-align: right;
+    color: #999;
+    font-size: 12px;
+  }
+  
+  #header .top_menu .row {
+    position: relative;
+    position: absolute;
+    top: 50%;
+    right: 10%;
+    transform: translateY(-50%);
+    display: none;
+  }
+  
+  #header:hover .top_menu .row {
     display: block;
-    padding: 13px 0 ;
-    transition: all 0.5s;
-}
-#header .depth2 li:hover a {
-    background: #cee7b7;
-}
-
-
-#header #nav .depth1 > li:hover > .depth2 {
+  }
+  
+  #header.on .top_menu .row {
     display: block;
-}
-
-#header #nav .right {
-	position: absolute;
-	top: 50%;
-	right: -68%;
-	transform: translateY(-50%);
-}
-#header #nav .btn {
-	color: #fff;
-	font-size: 16px;
-	background: #76a34e;
-	padding: 8px 24px;
-	border-radius: 3px 3px 3px 3px;
-	font-weight: 300;
-	transition: all 0.4s;
-}
-#header #nav .btn:hover {
-	background: #6ABC64;
-}
-#header #nav .search {
-	width: 30px;
+  }
+  
+  #header .top_menu a {
+    padding: 7px 20px;
+    display: inline-block;
+  }
+  
+  /* nav 메뉴 */
+  #header:hover #nav .depth1 > li {
+    color: #000;
+  }
+  
+  #header.on #nav .depth1 > li {
+    color: #000;
+  }
+  
+  #header #nav {
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  #header #nav .depth1 {
+    position: absolute;
+    top: 50%;
+    right: 15%;
+    transform: translateY(-50%);
+    width: 700px;
+    transition: all 0.8s;
+    display: flex;
+  }
+  
+  #header #nav .depth1 > li {
+    display: block;
+    padding: 0 30px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    position: relative;
+    margin: 45px 0;
+    transition: all 0.3s;
+  }
+  
+  #header #nav .depth1 > li:hover {
+    color: #90a4ae;
+  }
+  
+  /* #nav .navbox .box_bg {
+    width: 100%;
+    height: 0;
+    background: #fff;
+    display: none;
+    box-shadow: 0px 8px 10px 2px rgb(0 0 0 / 10%);
+    position: absolute;
+    top: 100px;
+  } */
+  
+  /* 사이드 메뉴 열기 버튼 */
+  .hamburger-button {
+    display: inline-block;
+    /* position: absolute; */
+    position: fixed;
+    transition: 0.3s ease-in-out;
+    width: 35px;
     height: 30px;
-    vertical-align: middle;
-    background: #d1bc79;
-	border-radius: 50%;
-	position: absolute;
-	top: 50%;
-	right: 120%;
-	transform: translateY(-50%);
-	border-bottom: 2px solid #000;
-	border-right: 2px solid #000;
-}
-#header #nav .search a {
-	color: #fff;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%,-50%);
-}
-#header #nav .search:hover {
-	border-top: 2px solid #000;
-	border-left: 2px solid #000;
-}
+    /* top: 50%;
+    right: 20px;
+    transform: translateY(-50%); */
+    top: 30px;
+    right: 3%;
+    z-index: 999999;
+  }
+  
+  .hamburger-button span {
+    position: absolute;
+    height: 8px;
+    border-radius: 4px;
+    width: 100%;
+    background: #fff;
+    top: 0;
+    transition: 0.2s;
+    z-index: 999999;
+  }
+  .hamburger-button:hover span {
+    background: #3d4146;
+  }
+  .hamburger-button span:nth-child(1) {
+    top: 0;
+  }
+  
+  .hamburger-button span:nth-child(2),
+  .hamburger-button span:nth-child(3) {
+    top: 13px;
+  }
+  
+  .hamburger-button span:nth-child(4) {
+    top: 26px;
+  }
+  
+  .hamburger-button.active {
+    z-index: 9999999;
+  }
+  
+  .hamburger-button.active span {
+    background-color: #fff;
+  }
+  .hamburger-button.active:hover span {
+    background-color: #3d4146;;
+  }
+  
+  .hamburger-button.active span:nth-child(1),
+  .hamburger-button.active span:nth-child(4) {
+    opacity: 0;
+  }
+  
+  .hamburger-button.active span:nth-child(2) {
+    transform: rotate(45deg);
+  }
+  
+  .hamburger-button.active span:nth-child(3) {
+    transform: rotate(-45deg);
+  }
 
 
-
-
-
-
-.footer {
-	width: 100%;
-}
-.footer .footer_top {
-	width: 100%;
-	background: #5c5040;
-	display: inline-block;
-}
-.footer .footer_top .topbox {
-	width: 930px;
-	margin: 0 auto;
-}
-.footer .footer_top ul {
-	margin-left: 23%;
-}
-.footer .footer_top ul li {
-	float: left;
-	color: #938d84;
-	padding: 15px 16px;
-	text-align: center;
-	font-size: 13px;
+  /* 푸터 */
+#footer {
+  width: 100%;
+  position: relative;
+  /* position: fixed;
+  left: 0;
+  bottom: 0; 
+  rwd 가져옴
+  padding: 20px 0 50px 0;
+    margin: 70px 0 50px 0;
+    */
+  background: #111;
+  padding: 20px 0 50px 0;
+  color: #ddd;
 }
 
-.footer .footer_bottom {
-	width: 100%;
-	background: #453d32;
-	padding: 0 15px;
-	margin-top: -2px;
-}
-.footer .footer_bottom span {
-	color: #908980;
-	font-size: 13px;
-	text-align: center;
-}
-.footer .footer_bottom p {
-	color: #908980;
-	font-size: 13px;
-	text-align: center;
-}
-.footer .footer_bottom .txt1 {
-	padding-top: 24px;
-	padding-bottom: 15px;
-}
-.footer .footer_bottom .txt2 {
-	padding-top: 0;
-	padding-bottom: 40px;
-}
-.footer .footer_bottom p a {
-	color:dodgerblue;
-}
-.footer .footer_bottom p a:hover {
-	text-decoration: underline;
+#footer .footer_wrap {
+  width: 80%;
+  margin: 0 auto;
+  position: relative;
 }
 
+#footer .footer_logo img {
+  width: 148px;
+  height: 85px;
+  position: absolute;
+  left: -60px;
+}
 
+#footer .fnb {
+  width: 80%;
+  /* padding: 15px 0 0 0; */
+  overflow: hidden;
+  margin-left: 160px;
+  position: absolute;
+  /* top: -15px; */
+  left: 0px;
+}
 
+#footer .fnb li {
+  display: inline-block;
+  color: #ddd;
+  font-weight: bold;
+  font-size: 16px;
+}
 
+#footer .fnb li:hover a {
+  color: #fff;
+}
+  
+#footer .fnb li a {
+  padding: 0 20px;
+}
+
+#footer .fnb span {
+  padding-left: 5px;
+  color: #777;
+  font-size: 14px;
+}
+
+.footerBottom {
+  position: relative;
+  padding: 42px 0 0;
+  /* margin-top: 30px; */
+  margin-left: 178px;
+  color: #ddd;
+}
+.footerBottom address {
+  font-size: 15px;
+  font-weight: 300;
+}
+
+.footerBottom .copyright {
+  margin: 10px 0 0;
+  font-size: 15px;
+  font-weight: 300;
+}
